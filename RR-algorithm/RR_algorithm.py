@@ -41,11 +41,16 @@ for i in range(1,total_running_time + 1):
         for process in ready_queue:
             if process[2] == 0:
                 ready_queue.remove(process)
-        print(str(i) + ": " + str(ready_queue[0][0]))
-        ready_queue[0][2] = ready_queue[0][2] - 1
-        buffer = ready_queue[0]
-        ready_queue.remove(ready_queue[0])
-        ready_queue.append(buffer)
+        if len(ready_queue) > 0:
+            print(str(i) + ": " + str(ready_queue[0][0]))
+            ready_queue[0][2] = ready_queue[0][2] - 1
+            buffer = ready_queue[0]
+            ready_queue.remove(ready_queue[0])
+            ready_queue.append(buffer)
+        else:
+            break
+
+print("done")
 
 
 
